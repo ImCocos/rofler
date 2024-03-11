@@ -1,4 +1,6 @@
 ```bash
+unzip ~/Загрузки/rofler-main.zip
+mv rofler-main rofler
 cd rofler
 python -m venv venv
 source venv/bin/activate
