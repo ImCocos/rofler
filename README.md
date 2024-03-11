@@ -7,4 +7,5 @@ source venv/bin/activate
 pip install requirements.txt
 mkdir ~/.config/autostart
 cp rofler ~/.config/autostart/rofler
+systemctl reboot
 ```
