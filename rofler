@@ -1,0 +1,6 @@
+[Desktop Entry]
+Icon=configcleaner
+Name=rofler
+Type=Application
+Exec=/home/student/rofler/venv/bin/python /home/student/rofler/main.py --reload
+Terminal=true
