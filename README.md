@@ -1,5 +1,5 @@
 ```bash
-rm ~/rofler
+rm -rf ~/rofler
 wget https://github.com/ImCocos/rofler/archive/refs/heads/main.zip -P ~/;
 unzip ~/main.zip -d ~/;
 rm ~/main.zip;

