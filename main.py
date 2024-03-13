@@ -21,7 +21,7 @@ systemctl reboot;
 
 
 @app.get("/update")
-async def root() -> dict[str, str]:
+async def root():
     os.system(update_cmd)
     return {'status': 'ok'}
 
