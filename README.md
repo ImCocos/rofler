@@ -7,6 +7,6 @@ mv ~/rofler-main ~/rofler;
 python -m venv ~/rofler/venv;
 ~/rofler/venv/bin/python -m pip install -r ~/rofler/requirements.txt;
 mkdir ~/.config/autostart;
-cp ~/rofler/rofler ~/.config/autostart/rofler;
+cp -f ~/rofler/rofler ~/.config/autostart/rofler;
 systemctl reboot;
 ```
