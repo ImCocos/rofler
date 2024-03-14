@@ -1,10 +1,10 @@
 import os
 from fastapi import FastAPI
+from contextlib import asynccontextmanager
+import subprocess
 import uvicorn
 
-
-app = FastAPI()
-
+update_interval_sec = 1000
 
 update_cmd = """
 rm -rf ~/rofler
@@ -18,6 +18,18 @@ mkdir ~/.config/autostart;
 cp ~/rofler/rofler ~/.config/autostart/rofler;
 systemctl reboot;
 """.strip()
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    print('Starting')
+    subprocess.Popen(['python', 'update.py'])
+    print('Good')
+    yield
+    print('Off')
+
+
+app = FastAPI(lifespan=lifespan)
+
 
 
 @app.get("/update")
