@@ -4,10 +4,10 @@ import requests
 from main import update_cmd, update_interval_sec
 from bs4 import BeautifulSoup as bs
 
-githubURL = 'https://github.com/Motusdevop/ControlPanelAPI/releases'
+githubURL = 'https://github.com/ImCocos/rofler/releases'
 
 def update():
-    # os.system(update_cmd)
+    os.system(update_cmd)
     print('Update........')
 
 def check_update() -> bool:
