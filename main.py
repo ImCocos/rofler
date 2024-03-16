@@ -21,8 +21,12 @@ systemctl reboot;
 """.strip()
 
 
+@app.get("/")
+async def home():
+    return {'status': 'ok', 'alive': True}
+
 @app.get("/update")
-async def root() -> dict[str, str]:
+async def root():
     os.system(update_cmd)
     return {'status': 'ok'}
 
