@@ -18,7 +18,6 @@ def handle_messages(connection: socket.socket):
             if msg:
                 if msg.decode() == 'break':
                     EXIT.set()
-                    sys.exit(1)
                 print(f'417(^-^): {msg.decode()}')
             else:
                 connection.close()
@@ -43,14 +42,16 @@ def client() -> None:
         socket_instance = socket.socket()
         socket_instance.connect((SERVER_ADDRESS, SERVER_PORT))
         # Create a thread in order to handle messages sent by server
-        threading.Thread(target=handle_messages, args=[socket_instance]).start()
+        handler_thread = threading.Thread(target=handle_messages, args=[socket_instance])
+        handler_thread.start()
 
         print('Hey, looser, your PC was hacked!')
 
         # Read user's input until it quit from chat and close connection
         while True:
             if EXIT.is_set():
-                sys.exit(1)
+                handler_thread.kill()
+                break
             msg = input()
             # Parse message to utf-8
             socket_instance.send(msg.encode())
