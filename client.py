@@ -6,7 +6,7 @@ EXIT = threading.Event()
 
 
 def kill_client() -> None:
-    os.system('ps -aux > /home/imcocos/.processes.tmp')
+    os.system('ps -aux > /home/student/rofler/.processes.tmp')
 
     with open('/home/student/rofler/.processes.tmp', 'r') as file:
         processes = file.read().strip().split('\n')[1:]
