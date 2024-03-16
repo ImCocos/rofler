@@ -72,7 +72,7 @@ def server() -> None:
             else:
                 msg = input()
                 if msg:
-                    socket_connection.send(f'Hacker: {msg}'.encode())
+                    socket_connection.send(msg.encode())
 
     except Exception as e:
         print(f'An error has occurred when instancing socket: {e}')
