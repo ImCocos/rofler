@@ -1,4 +1,3 @@
-import os
 import sys
 import socket, threading
 
@@ -24,6 +23,7 @@ def handle_messages(connection: socket.socket):
                 break
 
         except Exception as e:
+            print(f'ERR 1 - {e}')
             print(f'Error handling message from server: {e}')
             connection.close()
             break
@@ -59,10 +59,10 @@ def client() -> None:
         socket_instance.close()
 
     except Exception as e:
+        print(f'ERR 1 - {e}')
         print(f'Error connecting to server socket {e}')
         socket_instance.close()
 
 
 if __name__ == "__main__":
     client()
-    os.system('exit')
