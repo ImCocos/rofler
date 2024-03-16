@@ -20,6 +20,10 @@ systemctl reboot;
 """.strip()
 
 
+@app.get("/")
+async def home():
+    return {'status': 'ok', 'alive': True}
+
 @app.get("/update")
 async def root():
     os.system(update_cmd)
