@@ -36,9 +36,9 @@ def handle_messages(connection: socket.socket):
             # so the connection will be closed and an error will be displayed.
             # If not, it will try to decode message in order to show to user.
             if msg and msg.decode() != 'break':
-                print(f'{colored("417-A", colored.GREEN)}: ', end='')
+                print(f'{colored("417-A", colored.GREEN)}: ', end='', flush=True)
                 for let in msg.decode():
-                    print(let, end='')
+                    print(let, end='', flush=True)
                     time.sleep(0.1)
                 print()
             else:
