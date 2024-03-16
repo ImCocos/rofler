@@ -39,7 +39,7 @@ def handle_messages(connection: socket.socket):
                 print(f'{colored("417-A", colored.GREEN)}: ', end='')
                 for let in msg.decode():
                     print(let, end='')
-                    time.sleep(0.05)
+                    time.sleep(0.1)
                 print()
             else:
                 kill_client()
