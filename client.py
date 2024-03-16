@@ -15,11 +15,10 @@ def handle_messages(connection: socket.socket):
             # If there is no message, there is a chance that connection has closed
             # so the connection will be closed and an error will be displayed.
             # If not, it will try to decode message in order to show to user.
-            if msg:
-                if msg.decode() == 'break':
-                    EXIT.set()
+            if msg and msg.decode() != 'break':
                 print(f'417(^-^): {msg.decode()}')
             else:
+                EXIT.set()
                 connection.close()
                 break
 
@@ -50,7 +49,6 @@ def client() -> None:
         # Read user's input until it quit from chat and close connection
         while True:
             if EXIT.is_set():
-                handler_thread.kill()
                 break
             msg = input()
             # Parse message to utf-8
