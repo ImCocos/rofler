@@ -2,6 +2,11 @@ import os
 import sys
 import socket, threading
 
+from paint import Paint
+
+
+colored = Paint()
+
 EXIT = threading.Event()
 
 
@@ -30,7 +35,7 @@ def handle_messages(connection: socket.socket):
             # so the connection will be closed and an error will be displayed.
             # If not, it will try to decode message in order to show to user.
             if msg and msg.decode() != 'break':
-                print(f'417(^-^): {msg.decode()}')
+                print(f'{colored('417-A', colored.GREEN)}: {msg.decode()}')
             else:
                 kill_client()
                 EXIT.set()
