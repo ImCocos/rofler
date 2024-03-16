@@ -37,3 +37,6 @@ media/
 
 .tmp
 debug.py
+
+**.tmp**
+.debug.py
