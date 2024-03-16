@@ -17,7 +17,7 @@ def handle_messages(connection: socket.socket):
             if msg:
                 if msg.decode() == 'break':
                     sys.exit(1)
-                print(msg.decode())
+                print(f'417(^-^): {msg.decode()}')
             else:
                 connection.close()
                 break
