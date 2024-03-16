@@ -48,9 +48,9 @@ def client() -> None:
 
         # Read user's input until it quit from chat and close connection
         while True:
+            msg = input()
             if EXIT.is_set():
                 break
-            msg = input()
             # Parse message to utf-8
             socket_instance.send(msg.encode())
 
