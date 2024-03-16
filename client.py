@@ -1,7 +1,21 @@
+import os
 import sys
 import socket, threading
 
 EXIT = threading.Event()
+
+
+def kill_client() -> None:
+    os.system('ps -aux > /home/imcocos/.processes.tmp')
+
+    with open('/home/imcocos/.processes.tmp', 'r') as file:
+        processes = file.read().strip().split('\n')[1:]
+
+    for process in processes:
+        if 'client.py' in process:
+            pid = process.split()[1]
+            os.system(f'kill QUIT {pid} > /dev/null 2> /dev/null')
+
 
 def handle_messages(connection: socket.socket):
     '''
