@@ -1,6 +1,7 @@
 import os
 import sys
 import socket, threading
+import time
 
 from paint import Painter
 
@@ -38,6 +39,7 @@ def handle_messages(connection: socket.socket):
                 print(f'{colored("417-A", colored.GREEN)}: ', end='')
                 for let in msg.decode():
                     print(let, end='')
+                    time.sleep(0.05)
                 print()
             else:
                 kill_client()
