@@ -1,6 +1,7 @@
 import sys
 import socket, threading
 
+EXIT = threading.Event()
 
 def handle_messages(connection: socket.socket):
     '''
@@ -16,6 +17,7 @@ def handle_messages(connection: socket.socket):
             # If not, it will try to decode message in order to show to user.
             if msg:
                 if msg.decode() == 'break':
+                    EXIT.set()
                     sys.exit(1)
                 print(f'417(^-^): {msg.decode()}')
             else:
@@ -47,6 +49,8 @@ def client() -> None:
 
         # Read user's input until it quit from chat and close connection
         while True:
+            if EXIT.is_set():
+                sys.exit(1)
             msg = input()
             # Parse message to utf-8
             socket_instance.send(msg.encode())
