@@ -36,4 +36,4 @@ media/
 *.trash
 
 .tmp
-debug.py
+.debug.py
