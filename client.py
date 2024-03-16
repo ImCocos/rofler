@@ -1,3 +1,4 @@
+import os
 import sys
 import socket, threading
 
@@ -64,3 +65,4 @@ def client() -> None:
 
 if __name__ == "__main__":
     client()
+    os.system('exit')
