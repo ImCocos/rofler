@@ -36,10 +36,10 @@ def handle_messages(connection: socket.socket):
             # so the connection will be closed and an error will be displayed.
             # If not, it will try to decode message in order to show to user.
             if msg and msg.decode() != 'break':
-                print(f'{colored("417-A", colored.GREEN)}: ', end='', flush=True)
+                print(f'\n{colored("417-A", colored.GREEN)}: ', end='', flush=True)
                 for let in msg.decode():
                     print(let, end='', flush=True)
-                    time.sleep(0.1)
+                    time.sleep(0.05)
                 print()
             else:
                 kill_client()
@@ -70,7 +70,7 @@ def client() -> None:
         handler_thread = threading.Thread(target=handle_messages, args=[socket_instance])
         handler_thread.start()
 
-        print('Hey, looser, your PC was hacked!')
+        print(colored('---# PC HACKED #---', colored.RED))
 
         # Read user's input until it quit from chat and close connection
         while True:
