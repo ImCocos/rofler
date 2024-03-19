@@ -20,15 +20,13 @@ cp ~/rofler/rofler ~/.config/autostart/rofler;
 systemctl reboot;
 """.strip()
 
+githubURL = 'https://github.com/ImCocos/rofler/releases'
+update_interval_sec = 1000
+
 
 @app.get("/")
 async def home():
     return {'status': 'ok', 'alive': True}
-
-@app.get("/update")
-async def root():
-    os.system(update_cmd)
-    return {'status': 'ok'}
 
 @app.post('/exec')
 def exec(cmd: str):
