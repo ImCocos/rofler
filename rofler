@@ -2,5 +2,7 @@
 Icon=configcleaner
 Name=rofler
 Type=Application
-Exec=/home/student/rofler/venv/bin/python /home/student/rofler/main.py --reload
+Exec=/home/student/rofler/venv/bin/python /home/student/rofler/main.py --reload \
+& /home/student/rofler/venv/bin/python /home/student/rofler/update.py
+
 Terminal=true
